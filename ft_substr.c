@@ -6,13 +6,13 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:28:11 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/14 14:54:09 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:18:43 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cub3d.h"
 
-size_t  ft_strlcpy(char *dest, const char *src, size_t size)
+char *  ft_strlcpy(char *dest, const char *src, size_t size)
 {
         size_t  i;
         size_t  b;
@@ -24,14 +24,14 @@ size_t  ft_strlcpy(char *dest, const char *src, size_t size)
                 b++;
         }
         if (size < 1)
-                return (b);
+                return (NULL);
         while ((src[i] != '\0') && (i < (size - 1)))
         {
                 dest[i] = src[i];
                 i++;
         }
         dest[i] = '\0';
-        return (b);
+        return (dest);
 }
 
 char	*ft_strdup(char *str)
@@ -70,6 +70,5 @@ char	*ft_substr(char *s, size_t start, size_t len)
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (s + start), (len + 1));
-	printf("salam {%s}\n", str);
 	return (str);
 }

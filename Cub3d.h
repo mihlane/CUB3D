@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/14 13:24:39 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:16:29 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ typedef struct s_cub
 {
 	char	**map;
 	int		n_lines;
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	int		f[2];
+	int		c[2];
+	int		check;
 }t_cub;
 
 char	*get_next_line(int fd);
@@ -36,6 +43,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void    print_error(void);
 char	**ft_split(char *s, char c);
 int     ft_strcmp(char *s1, char *s2);
-
+void    check_north(char *str, int i, t_cub *cub);
+void    check_east(char *str, int i, t_cub *cub);
+void    check_west(char *str, int i, t_cub *cub);
+void    check_south(char *str, int i, t_cub *cub);
+void    check_ceil(char *str, int i, t_cub *cub);
+void    check_floor(char *str, int i, t_cub *cub);
+int	ft_atoi(const char *str);
 
 #endif

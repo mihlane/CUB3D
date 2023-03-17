@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:15:09 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/14 13:23:25 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:30:49 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*r_and_j(int filedes, char *buffer)
 
 	str = malloc(sizeof(char) * 2);
 	c = 1;
-	while (c != 0 && !ft_strchr(buffer, '\n'))
+	while (c != 0)
 	{
 		c = read(filedes, str, 1);
 		if (c == -1)
@@ -96,12 +96,13 @@ char	*r_and_j(int filedes, char *buffer)
 		buffer = ft_strjoin(buffer, str);
 	}
 	free (str);
+	// printf("buff{%s}\n", buffer);
 	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*ret;
+	// char		*ret;
 	static char	*buff;
 
 	if (fd < 0 )
@@ -109,7 +110,7 @@ char	*get_next_line(int fd)
 	buff = r_and_j(fd, buff);
 	if (!buff)
 		return (NULL);
-	ret = ft_cut(buff);
-	buff = ft_last_part(buff);
-	return (ret);
+	// ret = ft_cut(buff);
+	// buff = ft_last_part(buff);
+	return (buff);
 }
