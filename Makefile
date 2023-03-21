@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 12:46:43 by mhabibi-          #+#    #+#              #
-#    Updated: 2023/03/17 19:17:31 by mhabibi-         ###   ########.fr        #
+#    Updated: 2023/03/21 17:51:07 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS  = main.c\
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror 
+# FLAGS = -Wall -Wextra -Werror 
 
 all : $(NAME)
 $(NAME) : $(SRCS) 

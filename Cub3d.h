@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/21 12:04:48 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:48:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_cub
 	int		check;
 	int		check2;
 	int		conditions;
+	int		camma;
 }t_cub;
 
 char	*get_next_line(int fd);

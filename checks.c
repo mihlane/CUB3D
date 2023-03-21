@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/21 12:09:39 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:31:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,10 @@ void    get_numbers(char *str, int i, t_cub *cub)
        num2 =  get_current_char_as_string(str[i]);
        num = ft_strjoin(num, num2);
        i++;
+       if (str[i] == ',')
+        cub->camma++;
+        printf("------------{%d}\n", cub->camma);    
+       
     }
     if (cub->check < 3)
     {
@@ -123,8 +127,8 @@ void    get_numbers(char *str, int i, t_cub *cub)
             print_error();
         get_numbers(str, i, cub);
     }
-    printf("{%s}\n", num);
-    
+    if (cub->camma != 2)
+        print_error();
 }
 
 void    get_numbers2(char *str, int i, t_cub *cub)
@@ -138,30 +142,45 @@ void    get_numbers2(char *str, int i, t_cub *cub)
        num2 =  get_current_char_as_string(str[i]);
        num = ft_strjoin(num, num2);
        i++;
+       if (str[i] == ',')
+        cub->camma++;
+        printf("------------{%d}\n", cub->camma);    
+       
     }
-    if (cub->check2 < 3)
+    if (cub->check < 3)
     {
-        cub->f[cub->check2] = ft_atoi(num);
-        printf("cub = {%d}\n", cub->f[cub->check2]);
-        cub->check2++;
+        cub->f[cub->check] = ft_atoi(num);
+        printf("cub = {%d}\n", cub->f[cub->check]);
+        cub->check++;
         if ( str[i++] != ',' && i < (int)ft_strlen(str))
             print_error();
         get_numbers2(str, i, cub);
     }
-    printf("{%s}\n", num);    
+    if (cub->camma != 2)
+        print_error();
 }
 
 void    check_floor(char *str, int i, t_cub *cub)
 {
+    int z;
+
     i++;
     cub->check = 0;
     if (str[i++] != ' ' && str[i++] != '\t')
         print_error();
     while (str[i] == ' ' || str[i] == '\t')
         i++;
+    z = i;
     if (str[i] < 48 && str[i] > 57 )
         print_error();
-    get_numbers(str, i, cub); 
+        while (str[i])
+        {
+            if (str[i] != ',' || (str[i] < 48 && str[i] > 57)  )
+                print_error();
+            i++;
+        }
+    cub->camma = 0;
+    get_numbers(str, z, cub); 
     cub->conditions -=5;
     // (void)cub;
     // (void)i;
@@ -178,6 +197,7 @@ void    check_ceil(char *str, int i, t_cub *cub)
         i++;
     if (str[i] < 48 && str[i] > 57 )
         print_error();
+    cub->camma = 0;
     get_numbers2(str, i, cub); 
     cub->conditions -=6;
     // (void)cub;
