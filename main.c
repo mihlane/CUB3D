@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/17 19:00:17 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/20 22:28:35 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void    check_colors(char **map, t_cub *cub)
     int i;
 
     i = 0;
+    cub->conditions = 21;
     while(map[i])
     {
         check_col(map[i], cub);

@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/17 19:16:29 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:04:48 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_cub
 	int		f[2];
 	int		c[2];
 	int		check;
+	int		check2;
+	int		conditions;
 }t_cub;
 
 char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/17 19:28:14 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:09:39 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    check_north(char *str, int i, t_cub *cub)
     // if (fd < 0)
     //     print_error();
     cub->north = north;
-    printf("north = {%s}\n", cub->north);
+    cub->conditions -=1;
 }
 
 void    check_south(char *str, int i, t_cub *cub)
@@ -49,6 +49,7 @@ void    check_south(char *str, int i, t_cub *cub)
     // if (fd < 0)
     //     print_error();
     cub->south = south;
+    cub->conditions -=2;
     printf("south = {%s}\n", cub->south);
 }
 
@@ -68,6 +69,7 @@ void    check_west(char *str, int i, t_cub *cub)
     // if (fd < 0)
     //     print_error();
     cub->west = west;
+    cub->conditions -=3;
     printf("west = {%s}\n", cub->west);
 }
 
@@ -76,7 +78,6 @@ void    check_east(char *str, int i, t_cub *cub)
     char *east;
     int fd;
     i++;
-    printf("---------------%c", str[i]);
     if (str[i] != 'A' || (str[i+1] != ' ' && str[i+1] != '\t'))
         print_error();
     i+=2;
@@ -87,6 +88,7 @@ void    check_east(char *str, int i, t_cub *cub)
     // if (fd < 0)
     //     print_error();
     cub->east = east;
+    cub->conditions -=4;
     printf("east = {%s}\n", cub->east);
 }
 
@@ -125,6 +127,30 @@ void    get_numbers(char *str, int i, t_cub *cub)
     
 }
 
+void    get_numbers2(char *str, int i, t_cub *cub)
+{
+    // int z;
+    char *num;
+    char *num2;
+    num = ft_strdup("");
+    while (str[i] && str[i] != ',')
+    {
+       num2 =  get_current_char_as_string(str[i]);
+       num = ft_strjoin(num, num2);
+       i++;
+    }
+    if (cub->check2 < 3)
+    {
+        cub->f[cub->check2] = ft_atoi(num);
+        printf("cub = {%d}\n", cub->f[cub->check2]);
+        cub->check2++;
+        if ( str[i++] != ',' && i < (int)ft_strlen(str))
+            print_error();
+        get_numbers2(str, i, cub);
+    }
+    printf("{%s}\n", num);    
+}
+
 void    check_floor(char *str, int i, t_cub *cub)
 {
     i++;
@@ -136,6 +162,7 @@ void    check_floor(char *str, int i, t_cub *cub)
     if (str[i] < 48 && str[i] > 57 )
         print_error();
     get_numbers(str, i, cub); 
+    cub->conditions -=5;
     // (void)cub;
     // (void)i;
     // (void)str;
@@ -143,7 +170,17 @@ void    check_floor(char *str, int i, t_cub *cub)
 
 void    check_ceil(char *str, int i, t_cub *cub)
 {
-    (void)cub;
-    (void)i;
-    (void)str;
+    i++;
+    cub->check = 0;
+    if (str[i++] != ' ' && str[i++] != '\t')
+        print_error();
+    while (str[i] == ' ' || str[i] == '\t')
+        i++;
+    if (str[i] < 48 && str[i] > 57 )
+        print_error();
+    get_numbers2(str, i, cub); 
+    cub->conditions -=6;
+    // (void)cub;
+    // (void)i;
+    // (void)str;
 }
