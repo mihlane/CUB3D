@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/20 22:28:35 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:49:40 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,29 @@ void    check_name(char *name)
 	// return (0);
 }
 
-void    check_col(char *str, t_cub *cub)
+void    check_mapp(t_cub *cub, char **map, int z)
+{
+    int i;
+
+    i = 0;
+    cub->nump = 0;
+    while(map[z])
+    {
+        while (map[z][i])
+        {
+            if (map[z][i] != '0' && map[z][i] != '1' && cub->nump == 0)
+            {
+                cub->px = i;
+                cub->py = z;
+                cub->nump = 1;
+            }
+            i++;
+        }
+        z++;
+    }
+}
+
+void    check_col(char *str, t_cub *cub, char **map, int z)
 {
     int i;
 
@@ -50,6 +72,11 @@ void    check_col(char *str, t_cub *cub)
         check_floor(str, i, cub);
     if (str[i] == 'C')
         check_ceil(str, i, cub);
+    if (str[i] == '1' && cub->conditions == 0)
+        check_mapp(cub, map, z);
+    // else
+    //     print_error();
+        
 }
 
 void    check_colors(char **map, t_cub *cub)
@@ -60,7 +87,7 @@ void    check_colors(char **map, t_cub *cub)
     cub->conditions = 21;
     while(map[i])
     {
-        check_col(map[i], cub);
+        check_col(map[i], cub, map, i);
         i++;
     }
 }
