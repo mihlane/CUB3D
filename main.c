@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/25 00:25:31 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/25 17:44:45 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ void    check_mapp(t_cub *cub, char **map, int z)
 {
     int i;
 
-    i = 0;
     cub->nump = 0;
     while(map[z])
     {
+    printf("str = {%s}   z = %d\n",map[z],  z);
+        i = 0;
         while (map[z][i])
         {
             if (map[z][i] == 'E' || map[z][i] == 'N' || map[z][i] == 'W' || map[z][i] == 'S')
@@ -48,6 +49,7 @@ void    check_mapp(t_cub *cub, char **map, int z)
                 cub->px = i;
                 cub->py = z;
                 cub->nump = 1;
+                printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
             }
             i++;
         }
