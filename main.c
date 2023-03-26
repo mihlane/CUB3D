@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/26 01:50:35 by user             ###   ########.fr       */
+/*   Updated: 2023/03/26 18:03:56 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ char    *get_fake_map(char *str, int k)
     return (str);
 }
 int fk = 0;
+
+void    check_char(char **map, int z, int i)
+{
+    if (map[z][i+1] != '1' && map[z][i+1] != '0')
+        print_error();
+    if (map[z][i-1] != '1' && map[z][i-1] != '0')
+        print_error();
+    if (map[z+1][i] != '1' && map[z+1][i] != '0')
+        print_error();
+    if (map[z-1][i+1] != '1' && map[z-1][i+1] != '0')
+        print_error();
+}
+
 void    check_mapp(t_cub *cub, char **map, int z)
 {
     int i;
@@ -70,32 +83,43 @@ void    check_mapp(t_cub *cub, char **map, int z)
         z++;
     }
     i--;
+    z = i;
     while (map[i])
     {
         if (ft_strlen(map[i]) < k)
             map[i] = get_fake_map(map[i], k - ft_strlen(map[i]));
-        printf("str3533 = %s\n\n", map[i]);
         i++;
     }
-    while(map[z])
+    while (map[z])
     {
-    // printf("str = {%s}   z = %d\n",map[z],  z);
         i = 0;
         while (map[z][i])
         {
-            if (map[z][i] == 'E' || map[z][i] == 'N' || map[z][i] == 'W' || map[z][i] == 'S')
-            {
-                if (cub->nump != 0)
-                    print_error();
-                cub->px = i;
-                cub->py = z;
-                cub->nump = 1;
-                // printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
-            }
+            if (map[z][i] != '1')
+                check_char(map, z, i);
             i++;
         }
         z++;
     }
+    // while(map[z])
+    // {
+    // // printf("str = {%s}   z = %d\n",map[z],  z);
+    //     i = 0;
+    //     while (map[z][i])
+    //     {
+    //         if (map[z][i] == 'E' || map[z][i] == 'N' || map[z][i] == 'W' || map[z][i] == 'S')
+    //         {
+    //             if (cub->nump != 0)
+    //                 print_error();
+    //             cub->px = i;
+    //             cub->py = z;
+    //             cub->nump = 1;
+    //             // printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
+    //         }
+    //         i++;
+    //     }
+    //     z++;
+    // }
 }
 
 void    check_col(char *str, t_cub *cub, char **map, int z)
