@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/25 17:44:45 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/26 01:50:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,55 @@ void    check_name(char *name)
 	// return (0);
 }
 
+char    *get_fake_map(char *str, int k)
+{
+    char    *str2;
+    int     i;
+
+    i = 0;
+    // printf("str --------- %s\n\n", str);
+    str2 = malloc(sizeof(char) * (k + 1));
+    while (i < k)
+    {
+        str2[i] =  '*';
+        i++;
+    }
+    str2[i] = '\0';
+    str = ft_strjoin(str, str2);
+    // printf("%s\n", str);
+    return (str);
+}
+int fk = 0;
 void    check_mapp(t_cub *cub, char **map, int z)
 {
     int i;
+    int k;
 
+    // printf("str = %s\n\n", map[z]);
+    fk++;
+    if (fk == 1)
+        return;
+    k = ft_strlen(map[z]);
+    i = z;
+    z++;
     cub->nump = 0;
+    while (map[z])
+    {
+        if (ft_strlen(map[z]) > k)
+            k = ft_strlen(map[z]);
+        z++;
+    }
+    i--;
+    while (map[i])
+    {
+        if (ft_strlen(map[i]) < k)
+            map[i] = get_fake_map(map[i], k - ft_strlen(map[i]));
+        printf("str3533 = %s\n\n", map[i]);
+        i++;
+    }
     while(map[z])
     {
-    printf("str = {%s}   z = %d\n",map[z],  z);
+    // printf("str = {%s}   z = %d\n",map[z],  z);
         i = 0;
         while (map[z][i])
         {
@@ -49,7 +90,7 @@ void    check_mapp(t_cub *cub, char **map, int z)
                 cub->px = i;
                 cub->py = z;
                 cub->nump = 1;
-                printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
+                // printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
             }
             i++;
         }

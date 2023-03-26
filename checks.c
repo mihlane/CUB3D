@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/24 20:29:19 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/26 01:11:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    check_north(char *str, int i, t_cub *cub)
     //     print_error();
     cub->north = north;
     cub->conditions -=1;
-    printf("north = {%s}\n", cub->south);
+    // printf("north = {%s}\n", cub->south);
 }
 
 void    check_south(char *str, int i, t_cub *cub)
@@ -51,7 +51,7 @@ void    check_south(char *str, int i, t_cub *cub)
     //     print_error();
     cub->south = south;
     cub->conditions -=2;
-    printf("south = {%s}\n", cub->south);
+    // printf("south = {%s}\n", cub->south);
 }
 
 void    check_west(char *str, int i, t_cub *cub)
@@ -71,7 +71,7 @@ void    check_west(char *str, int i, t_cub *cub)
     //     print_error();
     cub->west = west;
     cub->conditions -=3;
-    printf("west = {%s}\n", cub->west);
+    // printf("west = {%s}\n", cub->west);
 }
 
 void    check_east(char *str, int i, t_cub *cub)
@@ -90,7 +90,7 @@ void    check_east(char *str, int i, t_cub *cub)
     //     print_error();
     cub->east = east;
     cub->conditions -=4;
-    printf("east = {%s}\n", cub->east);
+    // printf("east = {%s}\n", cub->east);
 }
 
 char	*get_current_char_as_string(char c)
