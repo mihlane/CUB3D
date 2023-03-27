@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/26 01:11:17 by user             ###   ########.fr       */
+/*   Updated: 2023/03/27 01:09:39 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void    check_north(char *str, int i, t_cub *cub)
     char *north;
     int fd;
     
+
+    if (cub->north != NULL)
+        print_error();
     i++;
-    // printf("%c", str[i]);
     if (str[i] != 'O' || (str[i+1] != ' ' && str[i+1] != '\t'))
         print_error();
     i+=2;
@@ -30,7 +32,6 @@ void    check_north(char *str, int i, t_cub *cub)
     //     print_error();
     cub->north = north;
     cub->conditions -=1;
-    // printf("north = {%s}\n", cub->south);
 }
 
 void    check_south(char *str, int i, t_cub *cub)
@@ -38,6 +39,8 @@ void    check_south(char *str, int i, t_cub *cub)
     char *south;
     int fd;
     
+    if (cub->south != NULL)
+        print_error();
     i++;
     // printf("%c", str[i]);
     if (str[i] != 'O' || (str[i+1] != ' ' && str[i+1] != '\t'))
@@ -58,8 +61,10 @@ void    check_west(char *str, int i, t_cub *cub)
 {
     char *west;
     int fd;
+
+    if (cub->west != NULL)
+        print_error();
     i++;
-    // printf("%c", str[i]);
     if (str[i] != 'E' || (str[i+1] != ' ' && str[i+1] != '\t'))
         print_error();
     i+=2;
@@ -71,13 +76,15 @@ void    check_west(char *str, int i, t_cub *cub)
     //     print_error();
     cub->west = west;
     cub->conditions -=3;
-    // printf("west = {%s}\n", cub->west);
 }
 
 void    check_east(char *str, int i, t_cub *cub)
 {
     char *east;
     int fd;
+
+    if (cub->east != NULL)
+        print_error();
     i++;
     if (str[i] != 'A' || (str[i+1] != ' ' && str[i+1] != '\t'))
         print_error();
@@ -90,7 +97,6 @@ void    check_east(char *str, int i, t_cub *cub)
     //     print_error();
     cub->east = east;
     cub->conditions -=4;
-    // printf("east = {%s}\n", cub->east);
 }
 
 char	*get_current_char_as_string(char c)
