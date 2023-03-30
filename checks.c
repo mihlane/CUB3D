@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/30 00:24:07 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/30 21:26:43 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ void    get_numbers2(char *str, int i, t_cub *cub)
     num = ft_strdup("");
     while (str[i] && str[i] != ',')
     {
+        while(str[i] == ' ')
+            i++;
        num2 =  get_current_char_as_string(str[i]);
        num = ft_strjoin(num, num2);
        i++;
@@ -162,7 +164,9 @@ void    get_numbers2(char *str, int i, t_cub *cub)
     {
         cub->f[cub->check] = ft_atoi(num);
         cub->check++;
-        if ( str[i++] != ',' && i < (int)ft_strlen(str))
+        while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+            i++;
+        if  ( str[i++] != ',' && i < (int)ft_strlen(str))
             print_error();
         get_numbers2(str, i, cub);
     }
