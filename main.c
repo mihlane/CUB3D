@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/27 23:53:09 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:53:49 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void    check_mapp(t_cub *cub, char **map, int z)
     {
         if (ft_strlen(map[z]) > k)
             k = ft_strlen(map[z]);
+        else if (map[z][0] == '\n')
+            print_error();
         z++;
     }
     i--;
