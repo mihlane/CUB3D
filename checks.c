@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/28 02:03:39 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/30 00:24:07 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ void    get_numbers(char *str, int i, t_cub *cub)
     {
         cub->f[cub->check] = ft_atoi(num);
         cub->check++;
-            if (i == (int)ft_strlen(str))
-                break;
+            // if (i == (int)ft_strlen(str))
+            //     break;
         if ( str[i++] != ',' && i < (int)ft_strlen(str))
         {
             printf("salam\n");
