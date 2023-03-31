@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:15:09 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/17 12:30:49 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/30 23:56:49 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,12 @@ char	*r_and_j(int filedes, char *buffer)
 	int		c;
 
 	str = malloc(sizeof(char) * 2);
-	c = 1;
+	c = read(filedes, str, 1);
+	if (c < 0)
+		print_error();
+	// c = 1;
 	while (c != 0)
 	{
-		c = read(filedes, str, 1);
 		if (c == -1)
 		{
 			free (str);
@@ -94,6 +96,7 @@ char	*r_and_j(int filedes, char *buffer)
 		}
 		str[c] = '\0';
 		buffer = ft_strjoin(buffer, str);
+		c = read(filedes, str, 1);
 	}
 	free (str);
 	// printf("buff{%s}\n", buffer);
