@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 06:48:42 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 07:42:23 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,43 +111,42 @@ char	*get_current_char_as_string(char c)
 	return (str);
 }
 
-void    get_numbers(char *str, int i, t_cub *cub)
+void    get_numbers(char **str, t_cub *cub)
 {
-    // int z;
+    int i;
+    int z;
     char *num;
     char *num2;
-    num = ft_strdup("");
-    while (str[i] && str[i] != ',' && str[i] != ' ')
+    
+    i = 0;
+    while (str[i])
     {
-       num2 =  get_current_char_as_string(str[i]);
-       num = ft_strjoin(num, num2);
-       i++;
-       if (str[i] == ',')
-        cub->camma++;      
-    }
-        while (str[i] && str[i] == ' ')
-            i++;
-    if (cub->check < 3)
-    {
-        cub->f[cub->check] = ft_atoi(num);
-        cub->check++;
-            // if (i == (int)ft_strlen(str))
-            //     break;
-        if ( str[i++] != ',' && i < (int)ft_strlen(str))
+        z = 0;
+        num = ft_strdup("");
+        while (str[i][z])
         {
-            printf("salam\n");
-            print_error();
+            if (str[i][z] != ' ' && (str[i][z] < '0' || str[i][z] > '9'))
+                print_error();
+            if  (str[i][z] == ' ')
+                z++;
+            else
+            {
+                num2 =  get_current_char_as_string(str[i][z]);
+                num = ft_strjoin(num, num2);
+                z++;
+            }
         }
-        get_numbers(str, i, cub);
+        cub->f[i] = ft_atoi(num);
+        free(num);
+        num = NULL;
+        i++;
     }
-    if (cub->camma != 2)
-        print_error();
 }
 
 
 void    check_floor(char *str, int i, t_cub *cub)
 {
-    int z;
+    char **str3;
 
     i++;
     cub->check = 0;
@@ -155,18 +154,31 @@ void    check_floor(char *str, int i, t_cub *cub)
         print_error();
     while (str[i] == ' ' || str[i] == '\t')
         i++;
-    z = i;
-    if (str[i] < 48 && str[i] > 57 )
+    // z = i;
+    if (str[i] < 48 || str[i] > 57 )
         print_error();
+    cub->camma = 0;
+    // get_numbers(str, z, cub); 
+    // cub->conditions -=5;
+        
+    str = ft_substr(str, i, ft_strlen(str) - i);
+    str = ft_strtrim(str," ");
+    str3 = ft_split(str, ',');
+    int k = 0;
+    while (str3[k])
+        k++;
+    if (k != 3)
+            print_error();
+    cub->camma = 0;
+    get_numbers(str3, cub); 
+    cub->conditions -=5;
+    printf("ff = {%s}\n", str);
         // while (str[i])
         // {
         //     if (str[i] != ',' || (str[i] < 48 && str[i] > 57)  )
         //         print_error();
         //     i++;
         // }
-    cub->camma = 0;
-    // get_numbers(str, z, cub); 
-    cub->conditions -=5;
     // (void)cub;
     // (void)i;
     // (void)str;
@@ -198,9 +210,17 @@ void    get_numbers2(char **str, t_cub *cub)
             }
         }
         cub->c[i] = ft_atoi(num);
+        printf("===========%d\n", cub->c[i]);
         free(num);
+        num = NULL;
         i++;
     }
+    i = 0;
+    // while (cub->c[i])
+    // {
+    //     printf("===========%d\n", cub->c[i]);
+    //     i++;
+    // }
 }
 
 void    check_ceil(char *str, int i, t_cub *cub)
@@ -212,7 +232,7 @@ void    check_ceil(char *str, int i, t_cub *cub)
         print_error();
     while (str[i] == ' ' || str[i] == '\t')
         i++;
-    if (str[i] < 48 && str[i] > 57 )
+    if (str[i] < 48 || str[i] > 57 )
         print_error();
     str = ft_substr(str, i, ft_strlen(str) - i);
     str = ft_strtrim(str," ");

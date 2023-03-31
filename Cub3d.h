@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 02:07:35 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 07:35:38 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_cub
 	char	*south;
 	char	*west;
 	char	*east;
-	int		f[2];
-	int		c[2];
+	int		f[3];
+	int		c[3];
 	int		check;
 	int		check2;
 	int		conditions;

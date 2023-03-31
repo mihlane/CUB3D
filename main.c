@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/30 23:57:08 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 07:51:07 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ void    check_mapp(t_cub *cub, char **map, int z)
         if ((int)ft_strlen(map[z]) > k)
             k = ft_strlen(map[z]);
         else if (map[z][0] == '\n')
+        {
             print_error();
+        }
         z++;
     }
     i--;
@@ -117,6 +119,7 @@ void    check_mapp(t_cub *cub, char **map, int z)
         i++;
     }
     z = k;
+    z++;
     while (map[z+1])
     {
         i = 0;
@@ -125,7 +128,8 @@ void    check_mapp(t_cub *cub, char **map, int z)
         {
             if (map[z][i] == '0' || map[z][i] == cub->player)
             {
-                // printf("map= {%c}-----%d-----%d {%s}\n", map[z][i], z, i, map[z]);
+                printf("map= {%c}-----%d-----%d {%s}\n", map[z][i], z, i, map[z]);
+                printf("salam\n");
                 check_char(map, z, i, cub);
             }
             i++;
@@ -166,8 +170,12 @@ void    check_col(char *str, t_cub *cub, char **map, int z)
         check_ceil(str, i, cub);
     if (str[i] == '1' && cub->conditions == 0)
         check_mapp(cub, map, z);
+    if (str[i] == '1' && cub->conditions != 0)
+    {
+        printf("sssss%d", cub->conditions);
+        print_error();
+    }
     // else
-    //     print_error();
         
 }
 
@@ -180,6 +188,14 @@ void    check_colors(char **map, t_cub *cub)
     while(map[i])
     {
         check_col(map[i], cub, map, i);
+        i++;
+    }
+    i = 0;
+    while (i < 3)
+    {
+        printf("%d       %d\n", cub->f[i], cub->c[i]);
+        if ((cub->c[i] < 0 || cub->c[i] > 255)  || (cub->f[i] < 0 || cub->f[i] > 255))
+            print_error();
         i++;
     }
 }
