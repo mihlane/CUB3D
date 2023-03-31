@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 08:53:35 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:58:12 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void    check_mapp(t_cub *cub, char **map, int z)
     int i;
     int k;
 
-    // printf("str = %s\n\n", map[z]);
     fk++;
     if (cub->player != '*')
         return;
@@ -124,15 +123,18 @@ void    check_mapp(t_cub *cub, char **map, int z)
         {
             if (map[z][i] == 'E' || map[z][i] == 'N' || map[z][i] == 'W' || map[z][i] == 'S')
             {
-                if ( cub->player != '*' || cub->nump != 0)
-                 print_error();
+                //     printf("sssssss %c ----- %d\n", cub->player, cub->nump);
+                // if ( cub->player != '*' || cub->nump != 0)
+                // {
+                //  print_error();
+                // }
                 cub->px = i;
                 cub->py = z;
                 cub->nump = 1;
                 cub->player = map[z][i];
-                // printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
+                printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
             }
-            else if (map[z][i] != '0' && map[z][i] != '1' && map[z][i] != ' ')
+            else if (map[z][i] != '0' && map[z][i] != '1' && map[z][i] != ' ' && map[z][i] != cub->door)
                     print_error();
             i++;
         }
@@ -198,7 +200,10 @@ void    check_col(char *str, t_cub *cub, char **map, int z)
     if (str[i] == 'C')
         check_ceil(str, i, cub);
     if (str[i] == '1' && cub->conditions == 0)
+    {
+        // printf("saaaaaaaaalam\n");
         check_mapp(cub, map, z);
+    }
     if (str[i] == '1' && cub->conditions != 0)
     {
         // printf("sssss%d", cub->conditions);
@@ -252,7 +257,7 @@ void    ft_init(t_cub *cub)
     cub->east = NULL;
     cub->west = NULL;
     cub->player = '*';
-    cub->player = '2';
+    cub->door = '2';
 }
 
 int main(int ac, char**av)
