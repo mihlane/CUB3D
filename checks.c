@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 00:39:51 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:08:09 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,8 @@ void    check_ceil(char *str, int i, t_cub *cub)
     if (str[i] < 48 && str[i] > 57 )
         print_error();
         str = ft_substr(str, i, ft_strlen(str) - i);
+        str = ft_strtrim(str," ");
+        printf("{%s}\n", str);
     cub->camma = 0;
     get_numbers2(str, i, cub); 
     cub->conditions -=6;
