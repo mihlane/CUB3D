@@ -6,7 +6,7 @@
 #    By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 12:46:43 by mhabibi-          #+#    #+#              #
-#    Updated: 2023/03/30 23:54:05 by mhabibi-         ###   ########.fr        #
+#    Updated: 2023/03/31 02:04:29 by mhabibi-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS  = main.c\
 		ft_substr.c\
 		checks.c\
 		ft_atoi.c\
+		ft_strtrim.c\
 
 CC = cc
 

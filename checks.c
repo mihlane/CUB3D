@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/30 21:26:43 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 00:39:51 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,28 +146,34 @@ void    get_numbers(char *str, int i, t_cub *cub)
 
 void    get_numbers2(char *str, int i, t_cub *cub)
 {
-    // int z;
+ // int z;
     char *num;
     char *num2;
     num = ft_strdup("");
-    while (str[i] && str[i] != ',')
+    while (str[i] && str[i] != ',' && str[i] != ' ')
     {
-        while(str[i] == ' ')
-            i++;
        num2 =  get_current_char_as_string(str[i]);
        num = ft_strjoin(num, num2);
        i++;
        if (str[i] == ',')
-        cub->camma++;
+       {
+        break;
+        cub->camma++;    
+       }  
     }
+        while (str[i] && str[i] == ' ')
+            i++;
     if (cub->check < 3)
     {
-        cub->f[cub->check] = ft_atoi(num);
+        cub->c[cub->check] = ft_atoi(num);
         cub->check++;
-        while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-            i++;
-        if  ( str[i++] != ',' && i < (int)ft_strlen(str))
+            // if (i == (int)ft_strlen(str))
+            //     break;
+        if ( str[i++] != ',' && i < (int)ft_strlen(str))
+        {
+            printf("salam\n");
             print_error();
+        }
         get_numbers2(str, i, cub);
     }
     if (cub->camma != 2)
@@ -211,6 +217,7 @@ void    check_ceil(char *str, int i, t_cub *cub)
         i++;
     if (str[i] < 48 && str[i] > 57 )
         print_error();
+        str = ft_substr(str, i, ft_strlen(str) - i);
     cub->camma = 0;
     get_numbers2(str, i, cub); 
     cub->conditions -=6;
