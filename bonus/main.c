@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 07:51:07 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:53:35 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,41 @@ int fk = 0;
 
 void    check_char(char **map, int z, int i, t_cub *cub)
 {
-    if (map[z][i+1] != '1' && map[z][i+1] != '0' && map[z][i+1] != cub->player)
+    if (map[z][i+1] != '1' && map[z][i+1] != '0' && map[z][i+1] != cub->player
+    && map[z][i+1] != cub->door)
         print_error();
-    if (map[z][i-1] != '1' && map[z][i-1] != '0' && map[z][i-1] != cub->player)
+    if (map[z][i-1] != '1' && map[z][i-1] != '0' && map[z][i-1] != cub->player
+    && map[z][i-1] != cub->door)
         print_error();
-    if (map[z+1][i] != '1' && map[z+1][i] != '0' && map[z+1][i] != cub->player)
+    if (map[z+1][i] != '1' && map[z+1][i] != '0' && map[z+1][i] != cub->player
+    && map[z+1][i] != cub->door)
         print_error();
-    if (map[z-1][i] != '1' && map[z-1][i] != '0' && map[z-1][i] != cub->player)
+    if (map[z-1][i] != '1' && map[z-1][i] != '0' && map[z-1][i] != cub->player
+    && map[z-1][i] != cub->door)
         print_error();
+}
+void    check_char2(char **map, int z, int i, t_cub *cub)
+{
+    // int i;
+    int k;
+
+    // i = 0;
+    k = 0;
+    (void)cub;
+    if (map[z][i+1] == '1' && map[z][i-1] == '1')
+        k++;
+    if (map[z+1][i] == '1' && map[z-1][i] == '1')
+        k++;
+    if (k == 0)
+        print_error();
+    // if (map[z][i+1] != '1' && map[z][i+1] != '0' && map[z][i+1] != cub->player)
+    //     print_error();
+    // if (map[z][i-1] != '1' && map[z][i-1] != '0' && map[z][i-1] != cub->player)
+    //     print_error();
+    // if (map[z+1][i] != '1' && map[z+1][i] != '0' && map[z+1][i] != cub->player)
+    //     print_error();
+    // if (map[z-1][i] != '1' && map[z-1][i] != '0' && map[z-1][i] != cub->player)
+    //     print_error();
 }
 
 void    check_mapp(t_cub *cub, char **map, int z)
@@ -123,15 +150,17 @@ void    check_mapp(t_cub *cub, char **map, int z)
     while (map[z+1])
     {
         i = 0;
-        printf("%s\n", map[z]);
+        // printf("%s\n", map[z]);
         while (map[z][i])
         {
             if (map[z][i] == '0' || map[z][i] == cub->player)
             {
-                printf("map= {%c}-----%d-----%d {%s}\n", map[z][i], z, i, map[z]);
-                printf("salam\n");
+                // printf("map= {%c}-----%d-----%d {%s}\n", map[z][i], z, i, map[z]);
+                // printf("salam\n");
                 check_char(map, z, i, cub);
             }
+            if (map[z][i] == cub->door)
+                check_char2(map, z, i, cub);
             i++;
         }
         z++;
@@ -172,7 +201,7 @@ void    check_col(char *str, t_cub *cub, char **map, int z)
         check_mapp(cub, map, z);
     if (str[i] == '1' && cub->conditions != 0)
     {
-        printf("sssss%d", cub->conditions);
+        // printf("sssss%d", cub->conditions);
         print_error();
     }
     // else
@@ -193,7 +222,7 @@ void    check_colors(char **map, t_cub *cub)
     i = 0;
     while (i < 3)
     {
-        printf("%d       %d\n", cub->f[i], cub->c[i]);
+        // printf("%d       %d\n", cub->f[i], cub->c[i]);
         if ((cub->c[i] < 0 || cub->c[i] > 255)  || (cub->f[i] < 0 || cub->f[i] > 255))
             print_error();
         i++;
@@ -223,6 +252,7 @@ void    ft_init(t_cub *cub)
     cub->east = NULL;
     cub->west = NULL;
     cub->player = '*';
+    cub->player = '2';
 }
 
 int main(int ac, char**av)

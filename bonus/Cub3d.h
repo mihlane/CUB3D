@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 07:35:38 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:15:34 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_cub
 	int		py;
 	int		nump;
 	char	player;
+	char	door;
 
 }t_cub;
 
