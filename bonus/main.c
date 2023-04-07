@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/04 22:13:05 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/07 05:51:33 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	check_name(char *name)
 	str2 = ft_substr(name, i, ft_strlen(name) - i);
 	if (ft_strcmp(str2, str) != 0)
 		print_error();
+	// free (str);
+	// free (name);
+	free (str2);
 }
 
 char	*get_fake_map(char *str, int k)
@@ -40,6 +43,7 @@ char	*get_fake_map(char *str, int k)
 	}
 	str2[i] = '\0';
 	str = ft_strjoin(str, str2);
+	free (str2);
 	return (str);
 }
 
@@ -189,8 +193,8 @@ void	check_col(char *str, t_cub *cub, char **map, int z)
 		check_ceil(str, i, cub);
 	if (str[i] == '1' && cub->conditions == 0)
 		check_mapp(cub, map, z);
-	if (str[i] == '1' && cub->conditions != 0)
-		print_error();
+	// if (str[i] == '1' && cub->conditions != 0)
+	// 	print_error();
 }
 
 void	check_colors(char **map, t_cub *cub)
@@ -201,6 +205,7 @@ void	check_colors(char **map, t_cub *cub)
 	cub->conditions = 21;
 	while (map[i])
 	{
+		printf("%s\n", map[i]);
 		check_col(map[i], cub, map, i);
 		i++;
 	}
@@ -214,14 +219,50 @@ void	check_colors(char **map, t_cub *cub)
 	}
 }
 
+// void	check_new_l(char *str)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (str[i])
+// 	{
+		
+// 	}
+// }
+
+void	check_lines(char *str, t_cub *cub)
+{
+	int i;
+
+	i = 0;
+	if (str[0] == '\n' && cub->line != 0)
+		print_error();
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		i++;
+	if (str[i] == '1')
+		cub->line++;
+}
+
 void	check_map(int fd, char *name, t_cub *cub)
 {
 	char	*str;
 	char	**map;
+	char	*buffer;
 
+	buffer = ft_strdup("");
+	cub->line = 0;
 	check_name(name);
-	str = get_next_line(fd);
-	map = ft_split(str, '\n');
+	while (1)
+	{
+		str = get_next_line(fd);
+			// printf("%s",str);
+		if (str == NULL)
+			break;
+		check_lines(str, cub);
+		buffer = ft_strjoin(buffer,str);
+	}
+	// check_new_l(str);
+	map = ft_split(buffer, '\n');
 	check_colors(map, cub);
 }
 
@@ -254,4 +295,6 @@ int	main(int ac, char**av)
 	cub = malloc(sizeof(t_cub));
 	ft_init(cub);
 	check_map(fd, av[1], cub);
+	// free (cub->north);
+	// while (1);
 }

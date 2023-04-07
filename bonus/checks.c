@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/04 21:50:19 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:39:27 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	check_north(char *str, int i, t_cub *cub)
 	// if (fd < 0)
 	//     print_error();
 	cub->north = north;
+	free (north);
 	cub->conditions -= 1;
 }
 
@@ -51,6 +52,7 @@ void	check_south(char *str, int i, t_cub *cub)
 	// if (fd < 0)
 	//     print_error();
 	cub->south = south;
+	free (south);
 	cub->conditions -= 2;
 }
 
@@ -72,6 +74,7 @@ void	check_west(char *str, int i, t_cub *cub)
 	// if (fd < 0)
 	//     print_error();
 	cub->west = west;
+	free (west);
 	cub->conditions -= 3;
 }
 
@@ -93,6 +96,7 @@ void	check_east(char *str, int i, t_cub *cub)
 	// if (fd < 0)
 	//     print_error();
 	cub->east = east;
+	free (east);
 	cub->conditions -= 4;
 }
 
@@ -130,6 +134,7 @@ void	get_numbers(char **str, t_cub *cub)
 			{
 				num2 = get_current_char_as_string(str[i][z]);
 				num = ft_strjoin(num, num2);
+				// free (num2);
 				z++;
 			}
 		}
@@ -164,6 +169,7 @@ void	check_floor(char *str, int i, t_cub *cub)
 		print_error();
 	cub->camma = 0;
 	get_numbers(str3, cub);
+	free (str3);
 	cub->conditions -= 5;
 }
 
@@ -188,6 +194,7 @@ void	get_numbers2(char **str, t_cub *cub)
 			else
 			{
 				num2 = get_current_char_as_string(str[i][z]);
+				// free (num2);
 				num = ft_strjoin(num, num2);
 				z++;
 			}
@@ -224,5 +231,6 @@ void	check_ceil(char *str, int i, t_cub *cub)
 		print_error();
 	cub->camma = 0;
 	get_numbers2(str3, cub);
+	free (str3);
 	cub->conditions -= 6;
 }
