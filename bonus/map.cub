@@ -3,7 +3,7 @@ SO  ./sprites/xpm_images/east.xpm
 WE  ./sprites/xpm_images/east.xpm
 EA  ./sprites/xpm_images/east.xpm
 
-C 255,100,100
+C 255,100, 1
 F 0,156,29
 
     11

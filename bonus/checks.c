@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/07 07:59:54 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/08 09:41:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_north(char *str, int i, t_cub *cub)
 {
 	char	*north;
-	int		fd;
+	// int		fd;
 
 	if (cub->north != NULL)
 		print_error();
@@ -26,7 +26,7 @@ void	check_north(char *str, int i, t_cub *cub)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	north = ft_substr(str, i, ft_strlen(str) - i);
-	fd = open(north, O_RDONLY, 0777);
+	// fd = open(north, O_RDONLY, 0777);
 	// if (fd < 0)
 	//     print_error();
 	cub->north = north;
@@ -37,7 +37,7 @@ void	check_north(char *str, int i, t_cub *cub)
 void	check_south(char *str, int i, t_cub *cub)
 {
 	char	*south;
-	int		fd;
+	// int		fd;
 
 	if (cub->south != NULL)
 		print_error();
@@ -48,7 +48,7 @@ void	check_south(char *str, int i, t_cub *cub)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	south = ft_substr(str, i, ft_strlen(str) - i);
-	fd = open(south, O_RDONLY, 0777);
+	// fd = open(south, O_RDONLY, 0777);
 	// if (fd < 0)
 	//     print_error();
 	cub->south = south;
@@ -59,7 +59,7 @@ void	check_south(char *str, int i, t_cub *cub)
 void	check_west(char *str, int i, t_cub *cub)
 {
 	char	*west;
-	int		fd;
+	// int		fd;
 
 	if (cub->west != NULL)
 		print_error();
@@ -70,7 +70,7 @@ void	check_west(char *str, int i, t_cub *cub)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	west = ft_substr(str, i, ft_strlen(str) - i);
-	fd = open(west, O_RDONLY, 0777);
+	// fd = open(west, O_RDONLY, 0777);
 	// if (fd < 0)
 	//     print_error();
 	cub->west = west;
@@ -81,7 +81,7 @@ void	check_west(char *str, int i, t_cub *cub)
 void	check_east(char *str, int i, t_cub *cub)
 {
 	char	*east;
-	int		fd;
+	// int		fd;
 
 	if (cub->east != NULL)
 		print_error();
@@ -92,7 +92,7 @@ void	check_east(char *str, int i, t_cub *cub)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	east = ft_substr(str, i, ft_strlen(str) - i);
-	fd = open(east, O_RDONLY, 0777);
+	// fd = open(east, O_RDONLY, 0777);
 	// if (fd < 0)
 	//     print_error();
 	cub->east = east;
@@ -145,6 +145,23 @@ void	get_numbers(char **str, t_cub *cub)
 	}
 }
 
+void	check_camma(char *str)
+{
+	int i;
+	int z;
+	
+	i = 0;
+	z = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			z++;
+		i++;
+	}
+	if (z != 2)
+		print_error();
+}
+
 void	check_floor(char *str, int i, t_cub *cub)
 {
 	char	**str3;
@@ -162,6 +179,7 @@ void	check_floor(char *str, int i, t_cub *cub)
 	cub->camma = 0;
 	str = ft_substr(str, i, ft_strlen(str) - i);
 	str = ft_strtrim(str, " ");
+	check_camma(str);
 	str3 = ft_split(str, ',');
 	while (str3[k])
 		k++;
@@ -170,6 +188,7 @@ void	check_floor(char *str, int i, t_cub *cub)
 	cub->camma = 0;
 	get_numbers(str3, cub);
 	free (str3);
+	free (str);
 	cub->conditions -= 5;
 }
 
@@ -200,12 +219,14 @@ void	get_numbers2(char **str, t_cub *cub)
 			}
 		}
 		cub->c[i] = ft_atoi(num);
+		printf("----------%d\n", cub->c[i]);
 		free(num);
 		num = NULL;
 		i++;
 	}
 	i = 0;
 }
+
 
 void	check_ceil(char *str, int i, t_cub *cub)
 {
@@ -223,7 +244,7 @@ void	check_ceil(char *str, int i, t_cub *cub)
 		print_error();
 	str = ft_substr(str, i, ft_strlen(str) - i);
 	str = ft_strtrim(str, " ");
-	printf("{%s}\n", str);
+	check_camma(str);
 	str3 = ft_split(str, ',');
 	while (str3[k])
 		k++;
@@ -232,5 +253,6 @@ void	check_ceil(char *str, int i, t_cub *cub)
 	cub->camma = 0;
 	get_numbers2(str3, cub);
 	free (str3);
+	free (str);
 	cub->conditions -= 6;
 }

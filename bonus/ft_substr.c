@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:28:11 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/05 10:40:29 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/08 06:49:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ char	*ft_substr(char *s, size_t start, size_t len)
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (s + start), (len + 1));
+	// free (s);
 	return (str);
 }

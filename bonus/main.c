@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/07 07:12:07 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/08 09:44:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,10 @@ void	check_mapp(t_cub *cub, char **map, int z)
 			if (map[z][i] == 'E' || map[z][i] == 'N'
 				|| map[z][i] == 'W' || map[z][i] == 'S')
 			{
-				// if ( cub->player != '*' || cub->nump != 0)
-				// {
-				//  print_error();
-				// }
+				if ( cub->player != '*' || cub->nump != 0)
+				{
+				 print_error();
+				}
 				cub->px = i;
 				cub->py = z;
 				cub->nump = 1;
