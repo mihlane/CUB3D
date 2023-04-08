@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/08 09:44:06 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 09:58:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,7 @@ void	check_lines(char *str, t_cub *cub)
 void	check_map(int fd, char *name, t_cub *cub)
 {
 	char	*str;
-	char	**map;
+	// char	**map;
 	char	*buffer;
 
 	buffer = ft_strdup("");
@@ -260,10 +260,13 @@ void	check_map(int fd, char *name, t_cub *cub)
 			break;
 		check_lines(str, cub);
 		buffer = ft_strjoin(buffer,str);
+		free (str);
 	}
 	// check_new_l(str);
-	map = ft_split(buffer, '\n');
-	check_colors(map, cub);
+	cub->map = ft_split(buffer, '\n');
+	free (buffer);
+	check_colors(cub->map, cub);
+	// free (map);
 }
 
 void	print_error(void)

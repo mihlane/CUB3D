@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/08 09:41:51 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 09:58:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	get_numbers(char **str, t_cub *cub)
 			{
 				num2 = get_current_char_as_string(str[i][z]);
 				num = ft_strjoin(num, num2);
-				// free (num2);
+				free (num2);
 				z++;
 			}
 		}
@@ -213,7 +213,7 @@ void	get_numbers2(char **str, t_cub *cub)
 			else
 			{
 				num2 = get_current_char_as_string(str[i][z]);
-				// free (num2);
+				free (num2);
 				num = ft_strjoin(num, num2);
 				z++;
 			}
