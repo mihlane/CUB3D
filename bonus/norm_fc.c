@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   norm_fc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 18:15:52 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/14 13:22:31 by mhabibi-         ###   ########.fr       */
+/*   Created: 2023/04/09 17:02:04 by mhabibi-          #+#    #+#             */
+/*   Updated: 2023/04/09 17:45:47 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "Cub3d.h"
 
+void	fill_and_free2(t_cub *cub, char *num, int i)
+{
+	cub->f[i] = ft_atoi(num);
+	free(num);
+	num = NULL;
+}
 
+char	*join_norm(char *num, char str)
+{
+	char	*num2;
 
-
-#endif
+	num2 = get_current_char_as_string(str);
+	num = ft_strjoin2(num, num2);
+	return (num);
+}

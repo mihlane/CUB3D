@@ -6,7 +6,7 @@
 #    By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 12:46:43 by mhabibi-          #+#    #+#              #
-#    Updated: 2023/03/31 02:04:29 by mhabibi-         ###   ########.fr        #
+#    Updated: 2023/04/09 17:32:15 by mhabibi-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,17 @@ SRCS  = main.c\
 		checks.c\
 		ft_atoi.c\
 		ft_strtrim.c\
-
+		check_textures.c\
+		floor_ceil.c\
+		norm_fc.c\
+		rgb.c\
+		check_inside_map.c\
+		check_map.c\
+		init_nd_fill.c\
+		
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+ FLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 all : $(NAME)
 $(NAME) : $(SRCS) 

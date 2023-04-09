@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:15:09 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/31 00:27:24 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:47:52 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ char	*r_and_j(int filedes, char *buffer)
 	int		c;
 
 	str = malloc(sizeof(char) * 2);
-	c = read(filedes, str, 1);
-	if (c < 0)
-		print_error();
-	// c = 1;
-	while (c != 0)
+	if (!str)
+		return (NULL);
+	c = 1;
+	while (c != 0 && !ft_strchr(buffer, '\n'))
 	{
+		c = read(filedes, str, 1);
 		if (c == -1)
 		{
 			free (str);
@@ -96,24 +96,22 @@ char	*r_and_j(int filedes, char *buffer)
 		}
 		str[c] = '\0';
 		buffer = ft_strjoin(buffer, str);
-		c = read(filedes, str, 1);
 	}
 	free (str);
-	// printf("buff{%s}\n", buffer);
 	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	// char		*ret;
+	char		*ret;
 	static char	*buff;
 
-	if (fd < 0 )
+	if (fd < 0)
 		return (0);
 	buff = r_and_j(fd, buff);
 	if (!buff)
 		return (NULL);
-	// ret = ft_cut(buff);
-	// buff = ft_last_part(buff);
-	return (buff);
+	ret = ft_cut(buff);
+	buff = ft_last_part(buff);
+	return (ret);
 }

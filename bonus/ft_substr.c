@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:28:11 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/09 05:29:35 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:45:15 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,5 @@ char	*ft_substr(char *s, size_t start, size_t len)
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (s + start), (len + 1));
-	// free (s);
 	return (str);
 }

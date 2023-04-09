@@ -6,114 +6,9 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:15:09 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/07 05:31:40 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:45:33 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #include "Cub3d.h"
-// #include <unistd.h>
-// #include <fcntl.h>
-// #include <stdio.h>
-
-// size_t	ft_sizelen(const char *s)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (s[i] != '\n' && s[i])
-// 		i++;
-// 	return (i);
-// }
-
-// char	*ft_cut(char *stored)
-// {
-// 	int		i;
-// 	char	*str;
-
-// 	i = 0;
-// 	if (!stored[i])
-// 		return (NULL);
-// 	i = ft_sizelen(stored);
-// 	str = (char *)malloc(sizeof(char) * (i + 2));
-// 	if (!str)
-// 		return (NULL);
-// 	i = 0;
-// 	while (stored[i] && stored[i] != '\n')
-// 	{
-// 		str[i] = stored[i];
-// 		i++;
-// 	}
-// 	if (stored[i] == '\n')
-// 	{
-// 		str[i] = stored[i];
-// 		i++;
-// 	}
-// 	str[i] = '\0';
-// 	return (str);
-// }
-
-// char	*ft_last_part(char *stored)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*str;
-
-// 	i = 0;
-// 	i = ft_sizelen(stored);
-// 	if (!stored[i])
-// 	{
-// 		free(stored);
-// 		return (NULL);
-// 	}
-// 	str = (char *)malloc(sizeof(char) * (ft_strlen(stored) - i + 1));
-// 	if (!str)
-// 		return (NULL);
-// 	i++;
-// 	j = 0;
-// 	while (stored[i])
-// 		str[j++] = stored[i++];
-// 	str[j] = '\0';
-// 	free(stored);
-// 	return (str);
-// }
-
-// char	*r_and_j(int filedes, char *buffer)
-// {
-// 	char	*str;
-// 	int		c;
-
-// 	str = malloc(sizeof(char) * 2);
-// 	c = read(filedes, str, 1);
-// 	if (c < 0)
-// 		print_error();
-// 	while (c != 0)
-// 	{
-// 		if (c == -1)
-// 		{
-// 			free (str);
-// 			return (NULL);
-// 		}
-// 		str[c] = '\0';
-// 		buffer = ft_strjoin(buffer, str);
-// 		c = read(filedes, str, 1);
-// 	}
-// 	free (str);
-// 	return (buffer);
-// }
-
-// char	*get_next_line(int fd)
-// {
-// 	static char	*buff;
-
-// 	if (fd < 0)
-// 		return (0);
-// 	buff = r_and_j(fd, buff);
-// 	if (!buff)
-// 		return (NULL);
-// 	return (buff);
-// }
-
-
 
 #include "Cub3d.h"
 #include <unistd.h>
@@ -193,7 +88,7 @@ char	*r_and_j(int filedes, char *buffer)
 	c = 1;
 	while (c != 0 && !ft_strchr(buffer, '\n'))
 	{
-		c = read(filedes, str,1);
+		c = read(filedes, str, 1);
 		if (c == -1)
 		{
 			free (str);

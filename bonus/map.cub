@@ -1,9 +1,9 @@
-NO  ./sprites/xpm_images/east.xpm
-SO  ./sprites/xpm_images/east.xpm
-WE  ./sprites/xpm_images/east.xpm
-EA  ./sprites/xpm_images/east.xpm
+NO  main.c
+SO  main.c
+WE  main.c
+EA  main.c
 
-C 255,10,251
+C 25,110,251
 F 0,156,29
 
     11
