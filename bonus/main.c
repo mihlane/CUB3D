@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:46:36 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/08 09:58:53 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 06:26:48 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	check_mapp(t_cub *cub, char **map, int z)
 				cub->py = z;
 				cub->nump = 1;
 				cub->player = map[z][i];
-				printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
+				// printf("x {%d}------ y {%d}-------- \n", cub->px, cub->py);
 			}
 			else if (map[z][i] != '0' && map[z][i] != '1'
 				&& map[z][i] != ' ' && map[z][i] != cub->door)
@@ -188,11 +188,16 @@ void	check_col(char *str, t_cub *cub, char **map, int z)
 	if (str[i] == 'E')
 		check_east(str, i, cub);
 	if (str[i] == 'F')
+	{
 		check_floor(str, i, cub);
+		// while (1);
+	}
 	if (str[i] == 'C')
 		check_ceil(str, i, cub);
 	if (str[i] == '1' && cub->conditions == 0)
+	{
 		check_mapp(cub, map, z);
+	}
 	// if (str[i] == '1' && cub->conditions != 0)
 	// 	print_error();
 }
@@ -205,7 +210,7 @@ void	check_colors(char **map, t_cub *cub)
 	cub->conditions = 21;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
+		// printf("%s\n", map[i]);
 		check_col(map[i], cub, map, i);
 		i++;
 	}
@@ -299,5 +304,6 @@ int	main(int ac, char**av)
 	ft_init(cub);
 	check_map(fd, av[1], cub);
 	// free (cub->north);
-	// while (1);
+	while (1);
+	printf("salina\n");
 }

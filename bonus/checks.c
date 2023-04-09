@@ -3,14 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:15:34 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/08 09:58:20 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 07:09:49 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cub3d.h"
+
+
+
+char	*ft_strjoin2(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = -1;
+	j = 0;
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	if (s1)
+		while (s1[++i] != '\0')
+			str[i] = s1[i];
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	free(s1);
+	free (s2);
+	return (str);
+}
 
 void	check_north(char *str, int i, t_cub *cub)
 {
@@ -133,8 +164,8 @@ void	get_numbers(char **str, t_cub *cub)
 			else
 			{
 				num2 = get_current_char_as_string(str[i][z]);
-				num = ft_strjoin(num, num2);
-				free (num2);
+				num = ft_strjoin2(num, num2);
+				// free (num2);
 				z++;
 			}
 		}
@@ -143,6 +174,7 @@ void	get_numbers(char **str, t_cub *cub)
 		num = NULL;
 		i++;
 	}
+		// free (cub->f);
 }
 
 void	check_camma(char *str)
@@ -165,6 +197,8 @@ void	check_camma(char *str)
 void	check_floor(char *str, int i, t_cub *cub)
 {
 	char	**str3;
+	char	*str2;
+	// char	*str4;
 	int		k;
 
 	i++;
@@ -177,8 +211,8 @@ void	check_floor(char *str, int i, t_cub *cub)
 	if (str[i] < 48 || str[i] > 57)
 		print_error();
 	cub->camma = 0;
-	str = ft_substr(str, i, ft_strlen(str) - i);
-	str = ft_strtrim(str, " ");
+	str2 = ft_substr(str, i, ft_strlen(str) - i);
+	str = ft_strtrim(str2, " ");
 	check_camma(str);
 	str3 = ft_split(str, ',');
 	while (str3[k])
@@ -187,9 +221,19 @@ void	check_floor(char *str, int i, t_cub *cub)
 		print_error();
 	cub->camma = 0;
 	get_numbers(str3, cub);
-	free (str3);
+	k = 0;
+	// printf("%p\n%p\n%p\n", str, str2, str3)
+	while (str3[k])
+	{
+		free (str3[k]);
+		k++;
+	}
+	free(str3);
 	free (str);
+	free (str2);
+	// free (str4);
 	cub->conditions -= 5;
+	// while (1);
 }
 
 void	get_numbers2(char **str, t_cub *cub)
@@ -213,24 +257,25 @@ void	get_numbers2(char **str, t_cub *cub)
 			else
 			{
 				num2 = get_current_char_as_string(str[i][z]);
-				free (num2);
-				num = ft_strjoin(num, num2);
+				num = ft_strjoin2(num, num2);
+				// free (num2);
 				z++;
 			}
 		}
 		cub->c[i] = ft_atoi(num);
-		printf("----------%d\n", cub->c[i]);
 		free(num);
+		// printf("----------%d\n", cub->c[i]);
 		num = NULL;
 		i++;
 	}
-	i = 0;
 }
 
 
 void	check_ceil(char *str, int i, t_cub *cub)
 {
 	char	**str3;
+	char	*str2;
+	char	*str4;
 	int		k;
 
 	k = 0;
@@ -242,17 +287,26 @@ void	check_ceil(char *str, int i, t_cub *cub)
 		i++;
 	if (str[i] < 48 || str[i] > 57)
 		print_error();
-	str = ft_substr(str, i, ft_strlen(str) - i);
-	str = ft_strtrim(str, " ");
+	str4 = ft_substr(str, i, ft_strlen(str) - i);
+	str2 = ft_strtrim(str, " ");
 	check_camma(str);
-	str3 = ft_split(str, ',');
+	str3 = ft_split(str4, ',');
 	while (str3[k])
 		k++;
 	if (k != 3)
 		print_error();
 	cub->camma = 0;
 	get_numbers2(str3, cub);
+	k = 0;
+	while (str3[k])
+	{
+		free (str3[k]);
+		k++;
+	}
 	free (str3);
 	free (str);
+	free (str2);
+	free (str4);
+	// while (1);
 	cub->conditions -= 6;
 }

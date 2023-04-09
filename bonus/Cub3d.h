@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/04/07 05:29:14 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:06:33 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	check_ceil(char *str, int i, t_cub *cub);
 void	check_floor(char *str, int i, t_cub *cub);
 int		ft_atoi(const char *str);
 char	*ft_strtrim(char *s1, char *set);
+char	**ft_split2(char *s, char c);
 
 #endif

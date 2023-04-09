@@ -6,7 +6,7 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:40:04 by mhabibi-          #+#    #+#             */
-/*   Updated: 2023/03/14 13:05:36 by mhabibi-         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:06:24 by mhabibi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,34 @@ char	**ft_split(char *s, char c)
 		}
 	}
 	tab[j] = 0;
+	return (tab);
+}
+
+char	**ft_split2(char *s, char c)
+{
+	char	**tab;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!s)
+		return (0);
+	tab = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
+	if (!tab)
+		return (0);
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+			i++;
+		if (s[i] != c && s[i])
+		{
+			tab[j] = ft_addword(s + i, c);
+			i += ft_wordlen(s + i, c);
+			j++;
+		}
+	}
+	tab[j] = 0;
+	free (s);
 	return (tab);
 }
