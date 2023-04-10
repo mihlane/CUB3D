@@ -6,11 +6,19 @@
 /*   By: ychaaibi <ychaaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:48:56 by mhabibi-          #+#    #+#             */
+<<<<<<< HEAD:Parsing/rgb.c
 /*   Updated: 2023/04/09 18:20:29 by ychaaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Parsing_Cub3d.h"
+=======
+/*   Updated: 2023/04/09 17:47:09 by mhabibi-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Cub3d.h"
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:Parsing/rgb.c
 
 int	rgbtoint(int r, int g, int b)
 {

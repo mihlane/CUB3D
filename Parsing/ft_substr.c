@@ -6,7 +6,11 @@
 /*   By: ychaaibi <ychaaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:28:11 by mhabibi-          #+#    #+#             */
+<<<<<<< HEAD:Parsing/ft_substr.c
 /*   Updated: 2023/04/09 18:20:29 by ychaaibi         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/09 17:45:15 by mhabibi-         ###   ########.fr       */
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:bonus/ft_substr.c
 /*                                                                            */
 /* ************************************************************************** */
 

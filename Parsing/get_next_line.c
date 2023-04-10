@@ -6,7 +6,11 @@
 /*   By: ychaaibi <ychaaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:15:09 by mhabibi-          #+#    #+#             */
+<<<<<<< HEAD:Parsing/get_next_line.c
 /*   Updated: 2023/04/09 18:20:29 by ychaaibi         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/09 17:47:52 by mhabibi-         ###   ########.fr       */
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:mandatory/get_next_line.c
 /*                                                                            */
 /* ************************************************************************** */
 

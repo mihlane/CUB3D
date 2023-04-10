@@ -6,7 +6,11 @@
 /*   By: mhabibi- <mhabibi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 12:47:41 by mhabibi-          #+#    #+#             */
+<<<<<<< HEAD:Parsing/Parsing_Cub3d.h
 /*   Updated: 2023/04/10 07:51:53 by mhabibi-         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/09 17:46:28 by mhabibi-         ###   ########.fr       */
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:bonus/Cub3d.h
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +89,19 @@ void	check_inside_map(char **map, t_cub *cub, int z, int k);
 void	fill_map(t_cub *cub);
 void	fill_text(t_cub *cub);
 void	ft_init(t_cub *cub);
+<<<<<<< HEAD:Parsing/Parsing_Cub3d.h
+=======
+void	print_error(void);
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:bonus/Cub3d.h
 int		get_max_len(char **map, int z, t_cub *cub);
 void	check_char2(char **map, int z, int i, t_cub *cub);
 void	check_char(char **map, int z, int i, t_cub *cub);
 char	*get_fake_map(char *str, int k);
 void	check_name(char *name);
 int		rgbtoint(int r, int g, int b);
+<<<<<<< HEAD:Parsing/Parsing_Cub3d.h
 void	check_first_line(char **map, int z);
+=======
+>>>>>>> 896aa80080c6943d717628c585d50dd98cca2d0e:bonus/Cub3d.h
 
 #endif
