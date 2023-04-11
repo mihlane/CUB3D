@@ -1,4 +1,4 @@
-NO                        RayCasting/txt/n.xpm                 
+NO    RayCasting/txt/n.xpm   
 SO RayCasting/txt/s.xpm
 EA RayCasting/txt/e.xpm
 WE RayCasting/txt/w.xpm
@@ -19,4 +19,3 @@ F 111,111,111
 10100000100001001
 10000000000000001
 11111111111111111
-if (str[i] == N && i+1 = O && i+2 = ' ')

@@ -64,7 +64,6 @@ int	main(int ac, char **av)
 	get_parse(cub);
 	init_game();
 	set_up_player();
-	exit(1);
 	raycasting();
 	mlx_put_image_to_window(g_game.mlx, g_game.mlx_game_win,
 		g_game.mlx_game_img.img, 0, 0);
